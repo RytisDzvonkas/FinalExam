@@ -1,8 +1,7 @@
-﻿namespace FinalEgzam.Database.Entities
+﻿namespace FinalEgzam.RequestModels
 {
-    public class Residence
+    public class ResidenceRequestModel
     {
-        public int Id { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public int HouseNumber { get; set; }

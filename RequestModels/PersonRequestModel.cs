@@ -1,8 +1,7 @@
-﻿namespace FinalEgzam.Database.Entities
+﻿namespace FinalEgzam.RequestModels
 {
-    public class Person
+    public class PersonRequestModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int PersonsCode { get; set; }
@@ -10,6 +9,5 @@
         public string Email { get; set; }
         public int ProfilePicture { get; set; }
         public int ResidenceId { get; set; }
-
     }
 }
