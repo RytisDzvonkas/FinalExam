@@ -34,10 +34,10 @@ namespace FinalExam.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PersonsCode = table.Column<int>(type: "int", nullable: false),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
+                    PersonsCode = table.Column<double>(type: "float", nullable: false),
+                    PhoneNumber = table.Column<double>(type: "float", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfilePicture = table.Column<int>(type: "int", nullable: false),
+                    ProfilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     ResidenceId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -34,10 +34,40 @@ namespace FinalEgzam.Controllers
             return _personRepository.AddNewPerson(person);
         }
 
-        [HttpPut]
-        public Person Update([FromQuery] int id, [FromBody] PersonRequestModel person)
+        [HttpPut("name")]
+        public Person UpdateName([FromQuery] int id, [FromBody] PersonRequestModel person)
         {
-            return _personRepository.Update(id, person);
+            return _personRepository.UpdateName(id, person);
+        }
+
+        [HttpPut("surname")]
+        public Person UpdateSurname([FromQuery] int id, [FromBody] PersonRequestModel person)
+        {
+            return _personRepository.UpdateSurname(id, person);
+        }
+
+        [HttpPut("personsCode")]
+        public Person UpdatePersonsCode([FromQuery] int id, [FromBody] PersonRequestModel person)
+        {
+            return _personRepository.UpdatePersonsCode(id, person);
+        }
+
+        [HttpPut("phoneNumber")]
+        public Person UpdatePhoneNumber([FromQuery] int id, [FromBody] PersonRequestModel person)
+        {
+            return _personRepository.UpdatePhoneNumber(id, person);
+        }
+
+        [HttpPut("email")]
+        public Person UpdateEmail([FromQuery] int id, [FromBody] PersonRequestModel person)
+        {
+            return _personRepository.UpdateEmail(id, person);
+        }
+
+        [HttpPut("picture")]
+        public Person UpdatePicture([FromQuery] int id, [FromBody] PersonRequestModel person)
+        {
+            return _personRepository.UpdatePicture(id, person);
         }
 
         [HttpDelete]

@@ -35,23 +35,55 @@ namespace FinalEgzam.Repositories
             };
             _context.People.Add(newPerson);
             _context.SaveChanges();
-
             return newPerson;
         }
 
-        public Person Update(int id, PersonRequestModel person)
+        public Person UpdateName(int id, PersonRequestModel person)
         {
-            var PersonToUpdate = _context.People.Single(x => x.Id == id);
-            PersonToUpdate.Name = person.Name;
-            PersonToUpdate.Surname = person.Surname;
-            PersonToUpdate.PersonsCode = person.PersonsCode;
-            PersonToUpdate.PhoneNumber = person.PhoneNumber;
-            PersonToUpdate.Email = person.Email;
-            PersonToUpdate.ProfilePicture = person.ProfilePicture;
-            PersonToUpdate.ResidenceId = person.ResidenceId;
+            var nameToUpdate = _context.People.Single(x => x.Id == id);
+            nameToUpdate.Name = person.Name;
             _context.SaveChanges();
+            return nameToUpdate;
+        }
 
-            return PersonToUpdate;
+        public Person UpdateSurname(int id, PersonRequestModel person)
+        {
+            var surnameToUpdate = _context.People.Single(x => x.Id == id);
+            surnameToUpdate.Surname = person.Surname;
+            _context.SaveChanges();
+            return surnameToUpdate;
+        }
+
+        public Person UpdatePersonsCode(int id, PersonRequestModel person)
+        {
+            var personsCodeToUpdate = _context.People.Single(x => x.Id == id);
+            personsCodeToUpdate.PersonsCode = person.PersonsCode;
+            _context.SaveChanges();
+            return personsCodeToUpdate;
+        }
+
+        public Person UpdatePhoneNumber(int id, PersonRequestModel person)
+        {
+            var phoneNumberToUpdate = _context.People.Single(x => x.Id == id);
+            phoneNumberToUpdate.PhoneNumber = person.PhoneNumber;
+            _context.SaveChanges();
+            return phoneNumberToUpdate;
+        }
+
+        public Person UpdateEmail(int id, PersonRequestModel person)
+        {
+            var emailToUpdate = _context.People.Single(x => x.Id == id);
+            emailToUpdate.Email = person.Email;
+            _context.SaveChanges();
+            return emailToUpdate;
+        }
+
+        public Person UpdatePicture(int id, PersonRequestModel person)
+        {
+            var pictureToUpdate = _context.People.Single(x => x.Id == id);
+            pictureToUpdate.ProfilePicture = person.ProfilePicture;
+            _context.SaveChanges();
+            return pictureToUpdate;
         }
 
         public Person Delete(int id)

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalExam.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230116153756_init")]
+    [Migration("20230116174956_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -40,14 +40,15 @@ namespace FinalExam.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PersonsCode")
-                        .HasColumnType("int");
+                    b.Property<double>("PersonsCode")
+                        .HasColumnType("float");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<double>("PhoneNumber")
+                        .HasColumnType("float");
 
-                    b.Property<int>("ProfilePicture")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("ProfilePicture")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("ResidenceId")
                         .HasColumnType("int");
