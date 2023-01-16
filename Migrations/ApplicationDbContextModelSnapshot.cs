@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace FinalEgzam.Migrations
+namespace FinalExam.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -55,6 +55,8 @@ namespace FinalEgzam.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ResidenceId");
+
                     b.ToTable("People");
                 });
 
@@ -97,6 +99,9 @@ namespace FinalEgzam.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -107,7 +112,31 @@ namespace FinalEgzam.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("PersonId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("FinalEgzam.Database.Entities.Person", b =>
+                {
+                    b.HasOne("FinalEgzam.Database.Entities.Residence", "Residence")
+                        .WithMany()
+                        .HasForeignKey("ResidenceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Residence");
+                });
+
+            modelBuilder.Entity("FinalEgzam.Database.Entities.User", b =>
+                {
+                    b.HasOne("FinalEgzam.Database.Entities.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Person");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,6 @@
-﻿namespace FinalEgzam.Database.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace FinalEgzam.Database.Entities
 {
     public class Person
     {
@@ -9,7 +11,7 @@
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
         public int ProfilePicture { get; set; }
+        public Residence Residence { get; set; }
         public int ResidenceId { get; set; }
-
     }
 }
