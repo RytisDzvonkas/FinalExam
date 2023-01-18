@@ -31,11 +31,13 @@ namespace FinalExam.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.Property<double>("PersonsCode")
                         .HasColumnType("float");
@@ -52,11 +54,10 @@ namespace FinalExam.Migrations
 
                     b.Property<string>("Surname")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ResidenceId");
 
                     b.ToTable("People");
                 });
@@ -79,11 +80,17 @@ namespace FinalExam.Migrations
                     b.Property<int>("HouseNumber")
                         .HasColumnType("int");
 
+                    b.Property<int>("PersonId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Street")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PersonId")
+                        .IsUnique();
 
                     b.ToTable("Residences");
                 });
@@ -113,31 +120,41 @@ namespace FinalExam.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PersonId");
+                    b.HasIndex("PersonId")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("FinalEgzam.Database.Entities.Person", b =>
+            modelBuilder.Entity("FinalEgzam.Database.Entities.Residence", b =>
                 {
-                    b.HasOne("FinalEgzam.Database.Entities.Residence", "Residence")
-                        .WithMany()
-                        .HasForeignKey("ResidenceId")
+                    b.HasOne("FinalEgzam.Database.Entities.Person", "Person")
+                        .WithOne("Residence")
+                        .HasForeignKey("FinalEgzam.Database.Entities.Residence", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Residence");
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("FinalEgzam.Database.Entities.User", b =>
                 {
                     b.HasOne("FinalEgzam.Database.Entities.Person", "Person")
-                        .WithMany()
-                        .HasForeignKey("PersonId")
+                        .WithOne("User")
+                        .HasForeignKey("FinalEgzam.Database.Entities.User", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Person");
+                });
+
+            modelBuilder.Entity("FinalEgzam.Database.Entities.Person", b =>
+                {
+                    b.Navigation("Residence")
+                        .IsRequired();
+
+                    b.Navigation("User")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
