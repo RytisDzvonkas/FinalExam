@@ -19,7 +19,7 @@ namespace FinalEgzam.Repositories
 
         public List<Residence> GetResidenceById(int id)
         {
-            return _context.Residences.Where(p => p.Id == id).ToList();
+            return _context.Residences.Where(p => p.UserId == id).ToList();
         }
         public Residence AddNewResidence(ResidenceRequestModel residence)
         {
@@ -29,6 +29,7 @@ namespace FinalEgzam.Repositories
                 Street = residence.Street,
                 HouseNumber = residence.HouseNumber,
                 FlatNumber = residence.FlatNumber,
+                UserId= residence.UserId,
             };
             _context.Residences.Add(newResidence);
             _context.SaveChanges();
@@ -38,7 +39,7 @@ namespace FinalEgzam.Repositories
 
         public Residence Update(int id, ResidenceRequestModel residence)
         {
-            var ResidenceToUpdate = _context.Residences.Single(x => x.Id == id);
+            var ResidenceToUpdate = _context.Residences.Single(x => x.UserId == id);
             ResidenceToUpdate.City = residence.City;
             ResidenceToUpdate.Street = residence.Street;
             ResidenceToUpdate.HouseNumber = residence.HouseNumber;
@@ -50,7 +51,7 @@ namespace FinalEgzam.Repositories
 
         public Residence Delete(int id)
         {
-            var residenceToDelete = _context.Residences.Single(x => x.Id == id);
+            var residenceToDelete = _context.Residences.Single(x => x.UserId == id);
             _context.Residences.Remove(residenceToDelete);
             _context.SaveChanges();
             return residenceToDelete;

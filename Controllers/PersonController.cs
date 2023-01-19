@@ -65,9 +65,9 @@ namespace FinalEgzam.Controllers
         }
 
         [HttpPut("picture")]
-        public Person UpdatePicture([FromQuery] int id, [FromBody] PersonRequestModel person)
+        public Person UpdatePicture([FromQuery] int id, [FromBody] byte[] data)
         {
-            return _personRepository.UpdatePicture(id, person);
+            return _personRepository.UpdatePicture(id, data);
         }
 
         [HttpDelete]

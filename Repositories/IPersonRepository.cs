@@ -13,7 +13,7 @@ namespace FinalEgzam.Repositories
         Person UpdatePersonsCode(int id, PersonRequestModel person);
         Person UpdatePhoneNumber(int id, PersonRequestModel person);
         Person UpdateEmail(int id, PersonRequestModel person);
-        Person UpdatePicture(int id, PersonRequestModel person);
+        Person UpdatePicture(int id, byte[] data);
         Person Delete(int id);
     }
 }

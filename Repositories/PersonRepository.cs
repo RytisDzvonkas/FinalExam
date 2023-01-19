@@ -19,7 +19,7 @@ namespace FinalEgzam.Repositories
 
         public List<Person> GetPersonById(int id)
         {
-            return _context.People.Where(p => p.Id == id).ToList();
+            return _context.People.Where(p => p.UserId == id).ToList();
         }
         public Person AddNewPerson(PersonRequestModel person)
         {
@@ -31,7 +31,7 @@ namespace FinalEgzam.Repositories
                 PhoneNumber = person.PhoneNumber,
                 Email = person.Email,
                 ProfilePicture = person.ProfilePicture,
-                ResidenceId = person.ResidenceId,
+                UserId = person.UserId,
             };
             _context.People.Add(newPerson);
             _context.SaveChanges();
@@ -40,7 +40,7 @@ namespace FinalEgzam.Repositories
 
         public Person UpdateName(int id, PersonRequestModel person)
         {
-            var nameToUpdate = _context.People.Single(x => x.Id == id);
+            var nameToUpdate = _context.People.Single(x => x.UserId == id);
             nameToUpdate.Name = person.Name;
             _context.SaveChanges();
             return nameToUpdate;
@@ -48,7 +48,7 @@ namespace FinalEgzam.Repositories
 
         public Person UpdateSurname(int id, PersonRequestModel person)
         {
-            var surnameToUpdate = _context.People.Single(x => x.Id == id);
+            var surnameToUpdate = _context.People.Single(x => x.UserId == id);
             surnameToUpdate.Surname = person.Surname;
             _context.SaveChanges();
             return surnameToUpdate;
@@ -56,7 +56,7 @@ namespace FinalEgzam.Repositories
 
         public Person UpdatePersonsCode(int id, PersonRequestModel person)
         {
-            var personsCodeToUpdate = _context.People.Single(x => x.Id == id);
+            var personsCodeToUpdate = _context.People.Single(x => x.UserId == id);
             personsCodeToUpdate.PersonsCode = person.PersonsCode;
             _context.SaveChanges();
             return personsCodeToUpdate;
@@ -64,7 +64,7 @@ namespace FinalEgzam.Repositories
 
         public Person UpdatePhoneNumber(int id, PersonRequestModel person)
         {
-            var phoneNumberToUpdate = _context.People.Single(x => x.Id == id);
+            var phoneNumberToUpdate = _context.People.Single(x => x.UserId == id);
             phoneNumberToUpdate.PhoneNumber = person.PhoneNumber;
             _context.SaveChanges();
             return phoneNumberToUpdate;
@@ -72,23 +72,23 @@ namespace FinalEgzam.Repositories
 
         public Person UpdateEmail(int id, PersonRequestModel person)
         {
-            var emailToUpdate = _context.People.Single(x => x.Id == id);
+            var emailToUpdate = _context.People.Single(x => x.UserId == id);
             emailToUpdate.Email = person.Email;
             _context.SaveChanges();
             return emailToUpdate;
         }
 
-        public Person UpdatePicture(int id, PersonRequestModel person)
+        public Person UpdatePicture(int id, byte[] data)
         {
-            var pictureToUpdate = _context.People.Single(x => x.Id == id);
-            pictureToUpdate.ProfilePicture = person.ProfilePicture;
+            var pictureToUpdate = _context.People.Single(x => x.UserId == id);
+            pictureToUpdate.ProfilePicture = data;
             _context.SaveChanges();
             return pictureToUpdate;
         }
 
         public Person Delete(int id)
         {
-            var personToDelete = _context.People.Single(x => x.Id == id);
+            var personToDelete = _context.People.Single(x => x.UserId == id);
             _context.People.Remove(personToDelete);
             _context.SaveChanges();
             return personToDelete;

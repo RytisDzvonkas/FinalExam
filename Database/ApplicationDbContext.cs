@@ -7,8 +7,8 @@ namespace FinalEgzam.Database
     {
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Person>().HasOne<Residence>(x => x.Residence).WithOne(ad => ad.Person).HasForeignKey<Residence>(ad => ad.PersonId);
-            modelBuilder.Entity<Person>().HasOne<User>(x => x.User).WithOne(x => x.Person).HasForeignKey<User>(x => x.PersonId);
+            modelBuilder.Entity<User>().HasOne<Residence>(x => x.Residence).WithOne(ad => ad.User).HasForeignKey<Residence>(ad => ad.UserId);
+            modelBuilder.Entity<User>().HasOne<Person>(x => x.Person).WithOne(x => x.User).HasForeignKey<Person>(x => x.UserId);
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Person> People { get; set; }

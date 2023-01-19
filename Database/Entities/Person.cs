@@ -5,6 +5,7 @@ namespace FinalEgzam.Database.Entities
 {
     public class Person
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [StringLength(60, MinimumLength = 3)]
         [Required]
@@ -21,8 +22,8 @@ namespace FinalEgzam.Database.Entities
         public string Email { get; set; }
         [Required]
         public byte[] ProfilePicture { get; set; }
-        public Residence Residence { get; set; }
-        public int ResidenceId { get; set; }
+        [ForeignKey("User")]
+        public int UserId { get; set; }
         public User User { get; set; }
     }
 }
