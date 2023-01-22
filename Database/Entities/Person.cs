@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinalEgzam.Database.Entities
@@ -7,23 +8,20 @@ namespace FinalEgzam.Database.Entities
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [StringLength(60, MinimumLength = 3)]
-        [Required]
+        [DefaultValue("name")]
         public string Name { get; set; }
-        [StringLength(60, MinimumLength = 3)]
-        [Required]
+        [DefaultValue("surname")]
         public string Surname { get; set; }
-        [Required]
+        [DefaultValue(0)]
         public double PersonsCode { get; set; }
-        [Required]
+        [DefaultValue(0)]
         public double PhoneNumber { get; set; }
-        [StringLength(60, MinimumLength = 3)]
-        [Required]
+        [DefaultValue("email")]
         public string Email { get; set; }
-        [Required]
+        [DefaultValue("ProfilePicture")]
         public byte[] ProfilePicture { get; set; }
-        [ForeignKey("User")]
-        public int UserId { get; set; }
+        
+        public int? UserId { get; set; }
         public User User { get; set; }
     }
 }

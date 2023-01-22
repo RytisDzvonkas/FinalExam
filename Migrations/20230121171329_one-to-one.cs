@@ -5,7 +5,7 @@
 namespace FinalExam.Migrations
 {
     /// <inheritdoc />
-    public partial class oneToOne : Migration
+    public partial class onetoone : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

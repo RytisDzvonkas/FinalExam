@@ -32,6 +32,8 @@ namespace FinalEgzam.Repositories
             };
             _context.Users.Add(newUser);
             _context.SaveChanges();
+            _context.People.Add(new Person());
+            _context.Residences.Add(new Residence());
 
             return newUser;
         }

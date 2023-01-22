@@ -29,7 +29,7 @@ namespace FinalEgzam.Repositories
                 Street = residence.Street,
                 HouseNumber = residence.HouseNumber,
                 FlatNumber = residence.FlatNumber,
-                UserId= residence.UserId,
+                UserId = residence.UserId,
             };
             _context.Residences.Add(newResidence);
             _context.SaveChanges();

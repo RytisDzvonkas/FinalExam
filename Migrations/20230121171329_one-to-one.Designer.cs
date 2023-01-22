@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalExam.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230119211502_oneToOne")]
-    partial class oneToOne
+    [Migration("20230121171329_one-to-one")]
+    partial class onetoone
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,8 @@ namespace FinalExam.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("nvarchar(60)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
