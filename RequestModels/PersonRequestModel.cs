@@ -8,6 +8,6 @@
         public double PhoneNumber { get; set; }
         public string Email { get; set; }
         public byte[] ProfilePicture { get; set; }
-        public int ResidenceId { get; set; }
+        public int UserId { get; set; }
     }
 }

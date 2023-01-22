@@ -1,18 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinalEgzam.Database.Entities
 {
     public class Residence
     {
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required]
+        [DefaultValue("city")]
         public string City { get; set; }
-        [Required]
+        [DefaultValue("street")]
         public string Street { get; set; }
-        [Required]
+        [DefaultValue(0)]
         public int HouseNumber { get; set; }
+        [DefaultValue(0)]
         public int FlatNumber { get; set; }
-        public Person Person { get; set; }
-        public int PersonId { get; set; }
+        [ForeignKey("User")]
+        public int? UserId { get; set; }
+        public User User{ get; set; }
     }
 }

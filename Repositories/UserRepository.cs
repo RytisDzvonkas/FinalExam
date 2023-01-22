@@ -29,10 +29,11 @@ namespace FinalEgzam.Repositories
                 Username = user.Username,
                 Password = user.Password,
                 Role = user.Role,
-                PersonId = user.PersonId,
             };
             _context.Users.Add(newUser);
             _context.SaveChanges();
+            _context.People.Add(new Person());
+            _context.Residences.Add(new Residence());
 
             return newUser;
         }
@@ -43,7 +44,6 @@ namespace FinalEgzam.Repositories
             UserToUpdate.Username = user.Username;
             UserToUpdate.Password = user.Password;
             UserToUpdate.Role = user.Role;
-            UserToUpdate.PersonId = user.PersonId;
             _context.SaveChanges();
 
             return UserToUpdate;
